@@ -19,11 +19,11 @@ public class ServiceApplication {
 	/*@Autowired
 	private DiscoveryClient discoveryClient;*/
 	
-	@Autowired
-    private EurekaClient eurekaClient;
-	
-	@Value("${spring.application.name}")
-	private String appName;
+//	@Autowired
+//    private EurekaClient eurekaClient;                 
+//	
+	@Value("${service.instance.name}")
+	private String instance;
 
 	public static void main(String[] args) {
 		SpringApplication.run(ServiceApplication.class, args);
@@ -32,6 +32,6 @@ public class ServiceApplication {
 	@RequestMapping("/")
 	public String message() {
 		
-		return "Hello from " + this.eurekaClient.getApplication(appName).getInstances();
+		return "Hello from " + instance;
 	}
 }
